@@ -34,7 +34,7 @@ export default async function (req: Request): Promise<Response> {
     });
 
     // Look up the business email to notify
-    let businessEmail = 'info@magnolia-uklid.cz';
+    let businessEmail = 'info@vivoclean.cz';
     try {
       const contentList = await base44.asServiceRole.entities.SiteContent.list();
       if (contentList[0]?.email) businessEmail = contentList[0].email;

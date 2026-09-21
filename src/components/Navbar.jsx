@@ -40,7 +40,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <span className="font-heading text-2xl md:text-3xl text-primary tracking-tight">
-            {content?.company_name || 'Magnolia'}
+            {content?.company_name || 'VivoClean'}
           </span>
           <span className="hidden sm:block w-8 h-px bg-accent group-hover:w-12 transition-all" />
         </Link>
@@ -80,9 +80,15 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center gap-4">
           {content?.phone && (
-            <a href={`tel:${content.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 text-sm text-foreground/70 hover:text-primary transition-colors">
-              <Phone className="w-4 h-4" /> {content.phone}
-            </a>
+            <div className="flex items-center gap-2 text-sm text-foreground/70">
+              <Phone className="w-4 h-4" />
+              {content.phone.split('·').map((p, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <span className="text-border">·</span>}
+                  <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="hover:text-primary transition-colors">{p.trim()}</a>
+                </React.Fragment>
+              ))}
+            </div>
           )}
           <Link
             to="/contact"

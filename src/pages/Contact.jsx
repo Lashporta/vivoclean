@@ -28,7 +28,12 @@ export default function Contact() {
                   <span className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary shrink-0"><Phone className="w-5 h-5" /></span>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">Phone</p>
-                    <a href={`tel:${content.phone.replace(/\s/g, '')}`} className="text-lg text-foreground hover:text-primary transition-colors">{content.phone}</a>
+                    {content.phone.split('·').map((p, i) => (
+                      <React.Fragment key={i}>
+                        {i > 0 && <span className="text-muted-foreground mx-2">·</span>}
+                        <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="text-lg text-foreground hover:text-primary transition-colors">{p.trim()}</a>
+                      </React.Fragment>
+                    ))}
                   </div>
                 </li>
               )}

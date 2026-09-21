@@ -96,9 +96,9 @@ export default function Home() {
       {/* About */}
       <section className="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">About Magnolia</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">About VivoClean</p>
           <h2 className="font-heading text-4xl md:text-5xl text-primary mb-6 text-balance">
-            {content?.about_heading || 'We are Magnolia — complete eco cleaning services across Prague'}
+            {content?.about_heading || 'We are VivoClean — complete eco cleaning services across Prague'}
           </h2>
           <p className="text-foreground/70 leading-relaxed whitespace-pre-line">
             {content?.about_text || 'We offer regular and one-off cleaning, as well as specialised services such as post-construction cleaning, moving cleaning, hourly housekeeping, laundry ironing, upholstery and carpet cleaning, window washing, common-area and office cleaning. We pride ourselves on thoroughness, fast communication and consistent quality.'}
@@ -109,7 +109,7 @@ export default function Home() {
         </div>
         <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
           {content?.about_image ? (
-            <Image src={content.about_image} alt="About Magnolia" className="w-full h-full object-cover" />
+            <Image src={content.about_image} alt="About VivoClean" className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full bg-secondary" />
           )}

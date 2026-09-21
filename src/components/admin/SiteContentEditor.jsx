@@ -60,7 +60,7 @@ export default function SiteContentEditor() {
         setData(list[0]);
       } else {
         // create an empty singleton
-        const created = await base44.entities.SiteContent.create({ company_name: 'Magnolia' });
+        const created = await base44.entities.SiteContent.create({ company_name: 'VivoClean' });
         setData(created);
       }
     } catch (e) {

@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <span className="font-heading text-3xl text-primary-foreground">
-              {content?.company_name || 'Magnolia'}
+              {content?.company_name || 'VivoClean'}
             </span>
           </div>
           <p className="text-sm leading-relaxed text-primary-foreground/60 max-w-xs">
@@ -59,7 +59,17 @@ export default function Footer() {
           <h4 className="font-heading text-xl text-primary-foreground mb-4">Contact</h4>
           <ul className="space-y-3 text-sm">
             {content?.phone && (
-              <li><a href={`tel:${content.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 text-primary-foreground/60 hover:text-primary-foreground transition-colors"><Phone className="w-4 h-4" /> {content.phone}</a></li>
+              <li className="flex items-start gap-2">
+                <Phone className="w-4 h-4 mt-0.5 shrink-0" />
+                <div>
+                  {content.phone.split('·').map((p, i) => (
+                    <React.Fragment key={i}>
+                      {i > 0 && <span className="text-primary-foreground/30 mx-1">·</span>}
+                      <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{p.trim()}</a>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </li>
             )}
             {content?.email && (
               <li><a href={`mailto:${content.email}`} className="flex items-center gap-2 text-primary-foreground/60 hover:text-primary-foreground transition-colors"><Mail className="w-4 h-4" /> {content.email}</a></li>
@@ -80,7 +90,7 @@ export default function Footer() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/40">
-          <p>© {new Date().getFullYear()} {content?.company_name || 'Magnolia'}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {content?.company_name || 'VivoClean'}. All rights reserved.</p>
           <p>Eco cleaning · Fully insured · Prague</p>
         </div>
       </div>
