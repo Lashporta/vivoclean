@@ -1,0 +1,122 @@
+{
+  "name": "SiteContent",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "title": "Company Name",
+      "default": "Magnolia"
+    },
+    "tagline": {
+      "type": "string",
+      "title": "Tagline",
+      "default": "Professional eco cleaning in Prague"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone",
+      "default": "+420 777 622 568"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email",
+      "default": "info@magnolia-uklid.cz"
+    },
+    "address": {
+      "type": "string",
+      "title": "Address",
+      "default": "Klimentsk\u00e1 2066/19, Praha 1"
+    },
+    "company_legal": {
+      "type": "string",
+      "title": "Legal Entity",
+      "default": "KUBRAK GROUP s.r.o."
+    },
+    "company_id": {
+      "type": "string",
+      "title": "Company ID (I\u010cO)",
+      "default": "17310610"
+    },
+    "hero_heading": {
+      "type": "string",
+      "title": "Hero Heading",
+      "default": "Professional cleaning at a fair price in Prague"
+    },
+    "hero_subheading": {
+      "type": "string",
+      "title": "Hero Subheading",
+      "default": "Eco-friendly, fully insured and trusted by 570+ clients. Get a no-obligation quote the same day."
+    },
+    "hero_image": {
+      "type": "string",
+      "title": "Hero Image URL",
+      "format": "url"
+    },
+    "hero_badges": {
+      "type": "array",
+      "title": "Hero Badges",
+      "items": {
+        "type": "string"
+      }
+    },
+    "about_heading": {
+      "type": "string",
+      "title": "About Heading",
+      "default": "We are Magnolia \u2014 complete eco cleaning services across Prague"
+    },
+    "about_text": {
+      "type": "string",
+      "title": "About Text"
+    },
+    "about_image": {
+      "type": "string",
+      "title": "About Image URL",
+      "format": "url"
+    },
+    "booking_intro_heading": {
+      "type": "string",
+      "title": "Booking Section Heading",
+      "default": "Fast and simple booking"
+    },
+    "booking_steps": {
+      "type": "array",
+      "title": "Booking Steps",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      }
+    },
+    "footer_text": {
+      "type": "string",
+      "title": "Footer Text"
+    },
+    "social_facebook": {
+      "type": "string",
+      "title": "Facebook URL",
+      "format": "url"
+    },
+    "social_instagram": {
+      "type": "string",
+      "title": "Instagram URL",
+      "format": "url"
+    },
+    "social_linkedin": {
+      "type": "string",
+      "title": "LinkedIn URL",
+      "format": "url"
+    }
+  },
+  "required": [
+    "company_name"
+  ]
+}

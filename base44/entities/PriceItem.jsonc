@@ -1,0 +1,34 @@
+{
+  "name": "PriceItem",
+  "type": "object",
+  "properties": {
+    "service_name": {
+      "type": "string",
+      "title": "Service Name"
+    },
+    "price": {
+      "type": "string",
+      "title": "Price",
+      "default": "400 CZK / hour"
+    },
+    "unit": {
+      "type": "string",
+      "title": "Unit",
+      "default": "+ transportation"
+    },
+    "category": {
+      "type": "string",
+      "title": "Category",
+      "default": "General"
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "service_name",
+    "price"
+  ]
+}

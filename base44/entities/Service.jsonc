@@ -1,0 +1,70 @@
+{
+  "name": "Service",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string",
+      "title": "URL Slug",
+      "description": "Used in the page URL, e.g. home-cleaning"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "short_description": {
+      "type": "string",
+      "title": "Short Description (card)"
+    },
+    "card_image": {
+      "type": "string",
+      "title": "Card Image URL",
+      "format": "url"
+    },
+    "hero_image": {
+      "type": "string",
+      "title": "Hero Image URL",
+      "format": "url"
+    },
+    "intro": {
+      "type": "string",
+      "title": "Intro Paragraph",
+      "description": "Shown under the hero on the service page"
+    },
+    "main_body": {
+      "type": "string",
+      "title": "Main Body",
+      "description": "Main descriptive section"
+    },
+    "whats_included": {
+      "type": "array",
+      "title": "What's Included",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extra_info": {
+      "type": "string",
+      "title": "Extra Info",
+      "description": "Additional paragraph (e.g. regular / general cleaning notes)"
+    },
+    "price_from": {
+      "type": "string",
+      "title": "Price From",
+      "default": "400 CZK / hour"
+    },
+    "cta_label": {
+      "type": "string",
+      "title": "CTA Label",
+      "default": "Request a quote"
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "slug",
+    "title"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "FaqItem",
+  "type": "object",
+  "properties": {
+    "question": {
+      "type": "string",
+      "title": "Question"
+    },
+    "answer": {
+      "type": "string",
+      "title": "Answer"
+    },
+    "service_slug": {
+      "type": "string",
+      "title": "Service Slug",
+      "description": "Leave empty to show on the home page only"
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "question",
+    "answer"
+  ]
+}

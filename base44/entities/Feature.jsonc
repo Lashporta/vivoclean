@@ -1,0 +1,29 @@
+{
+  "name": "Feature",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "icon": {
+      "type": "string",
+      "title": "Icon",
+      "description": "Lucide icon name, e.g. Leaf, ShieldCheck, Clock",
+      "default": "Sparkles"
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "title",
+    "description"
+  ]
+}

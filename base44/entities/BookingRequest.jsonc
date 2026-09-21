@@ -1,0 +1,62 @@
+{
+  "name": "BookingRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Full Name"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone"
+    },
+    "address": {
+      "type": "string",
+      "title": "Cleaning Address"
+    },
+    "preferred_time": {
+      "type": "string",
+      "title": "Preferred Time"
+    },
+    "service": {
+      "type": "string",
+      "title": "Service"
+    },
+    "message": {
+      "type": "string",
+      "title": "Message"
+    },
+    "has_vacuum": {
+      "type": "string",
+      "title": "Has own vacuum?",
+      "enum": [
+        "Yes",
+        "No"
+      ],
+      "default": "No"
+    },
+    "promo_code": {
+      "type": "string",
+      "title": "Promo Code"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "new",
+        "contacted",
+        "done"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ]
+}

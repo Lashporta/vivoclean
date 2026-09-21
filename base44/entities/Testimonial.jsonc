@@ -1,0 +1,32 @@
+{
+  "name": "Testimonial",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Customer Name"
+    },
+    "text": {
+      "type": "string",
+      "title": "Testimonial"
+    },
+    "rating": {
+      "type": "number",
+      "title": "Rating (1-5)",
+      "default": 5
+    },
+    "location": {
+      "type": "string",
+      "title": "Location"
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "text"
+  ]
+}

@@ -1,11 +1,19 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import Layout from '@/components/Layout';
+import Home from '@/pages/Home';
+import ServiceDetail from '@/pages/ServiceDetail';
+import PriceList from '@/pages/PriceList';
+import About from '@/pages/About';
+import Contact from '@/pages/Contact';
+import Admin from '@/pages/Admin';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -34,7 +42,21 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      {/* Add your page Route elements here */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/prices" element={<PriceList />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />
+          }
+        >
+          <Route path="/admin" element={<Admin />} />
+        </Route>
+      </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
