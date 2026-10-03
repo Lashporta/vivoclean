@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Image } from '@/components/ui/image';
+import { useI18n } from '@/lib/i18n';
 
 export default function ServiceCard({ service, index = 0 }) {
+  const { t } = useI18n();
   return (
     <Link
       to={`/services/${service.slug}`}
@@ -30,7 +32,7 @@ export default function ServiceCard({ service, index = 0 }) {
           <p className="text-sm text-foreground/70 leading-relaxed line-clamp-3">{service.short_description}</p>
         )}
         <div className="mt-5 flex items-center gap-2 text-sm text-primary group-hover:gap-3 transition-all">
-          Learn more <ArrowRight className="w-4 h-4" />
+          {t('card.learnMore')} <ArrowRight className="w-4 h-4" />
         </div>
       </div>
     </Link>

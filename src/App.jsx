@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { LanguageProvider } from '@/lib/i18n';
 import Layout from '@/components/Layout';
 import Home from '@/pages/Home';
 import ServiceDetail from '@/pages/ServiceDetail';
@@ -69,8 +70,10 @@ function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
         <Router>
-          <ScrollToTop />
-          <AuthenticatedApp />
+          <LanguageProvider>
+            <ScrollToTop />
+            <AuthenticatedApp />
+          </LanguageProvider>
         </Router>
         <Toaster />
       </QueryClientProvider>

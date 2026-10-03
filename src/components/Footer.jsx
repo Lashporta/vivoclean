@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useServices, useSiteContent } from '@/hooks/useContent';
+import { useI18n } from '@/lib/i18n';
 import MagnoliaFlower from '@/components/MagnoliaFlower';
 
 export default function Footer() {
   const { data: services = [] } = useServices();
   const { data: content } = useSiteContent();
+  const { t } = useI18n();
 
   return (
     <footer className="relative bg-primary text-primary-foreground/80 mt-24">
@@ -19,7 +21,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm leading-relaxed text-primary-foreground/60 max-w-xs">
-            {content?.footer_text || content?.tagline || 'Professional eco-friendly cleaning services across Prague.'}
+            {content?.footer_text || content?.tagline || 'Profesionální ekologické úklidové služby v Praze.'}
           </p>
           <div className="flex items-center gap-3 mt-5">
             {content?.social_facebook && (
@@ -35,7 +37,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-heading text-xl text-primary-foreground mb-4">Services</h4>
+          <h4 className="font-heading text-xl text-primary-foreground mb-4">{t('footer.services')}</h4>
           <ul className="space-y-2 text-sm">
             {services.map((s) => (
               <li key={s.id}>
@@ -46,17 +48,17 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-heading text-xl text-primary-foreground mb-4">Company</h4>
+          <h4 className="font-heading text-xl text-primary-foreground mb-4">{t('footer.company')}</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/about" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">About us</Link></li>
-            <li><Link to="/prices" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">Price list</Link></li>
-            <li><Link to="/contact" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">Request a quote</Link></li>
-            <li><Link to="/admin" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">Admin</Link></li>
+            <li><Link to="/about" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{t('footer.aboutUs')}</Link></li>
+            <li><Link to="/prices" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{t('footer.priceList')}</Link></li>
+            <li><Link to="/contact" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{t('footer.requestQuote')}</Link></li>
+            <li><Link to="/admin" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{t('footer.admin')}</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-heading text-xl text-primary-foreground mb-4">Contact</h4>
+          <h4 className="font-heading text-xl text-primary-foreground mb-4">{t('footer.contact')}</h4>
           <ul className="space-y-3 text-sm">
             {content?.phone && (
               <li className="flex items-start gap-2">
@@ -90,8 +92,8 @@ export default function Footer() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/40">
-          <p>© {new Date().getFullYear()} {content?.company_name || 'VivoClean'}. All rights reserved.</p>
-          <p>Eco cleaning · Fully insured · Prague</p>
+          <p>© {new Date().getFullYear()} {content?.company_name || 'VivoClean'}. {t('footer.allRights')}</p>
+          <p>{t('footer.ecoLine')}</p>
         </div>
       </div>
     </footer>

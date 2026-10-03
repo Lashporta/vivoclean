@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { useServices, useSiteContent } from '@/hooks/useContent';
+import { useI18n } from '@/lib/i18n';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
@@ -11,6 +13,7 @@ export default function Navbar() {
   const { data: services = [] } = useServices();
   const { data: content } = useSiteContent();
   const location = useLocation();
+  const { t } = useI18n();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -46,7 +49,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          <NavLink to="/" end className={linkClass}>Home</NavLink>
+          <NavLink to="/" end className={linkClass}>{t('nav.home')}</NavLink>
 
           <div
             className="relative"
@@ -54,7 +57,7 @@ export default function Navbar() {
             onMouseLeave={() => setServicesOpen(false)}
           >
             <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/70 hover:text-primary transition-colors">
-              Services <ChevronDown className="w-3.5 h-3.5" />
+              {t('nav.services')} <ChevronDown className="w-3.5 h-3.5" />
             </button>
             {servicesOpen && (
               <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-64">
@@ -73,12 +76,13 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/prices" className={linkClass}>Prices</NavLink>
-          <NavLink to="/about" className={linkClass}>About</NavLink>
-          <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+          <NavLink to="/prices" className={linkClass}>{t('nav.prices')}</NavLink>
+          <NavLink to="/about" className={linkClass}>{t('nav.about')}</NavLink>
+          <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
+          <LanguageSwitcher />
           {content?.phone && (
             <div className="flex items-center gap-2 text-sm text-foreground/70">
               <Phone className="w-4 h-4" />
@@ -94,14 +98,14 @@ export default function Navbar() {
             to="/contact"
             className="px-5 py-2.5 bg-primary text-primary-foreground rounded-md text-sm tracking-wide hover:bg-primary/90 transition-colors"
           >
-            Request a quote
+            {t('nav.requestQuote')}
           </Link>
         </div>
 
         <button
           className="lg:hidden p-2 -mr-2 text-foreground"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={t('nav.toggleMenu')}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -110,9 +114,23 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden frosted border-t border-border/60 mt-3">
           <div className="px-5 py-4 flex flex-col gap-1">
-            <NavLink to="/" end className={linkClass}>Home</NavLink>
+            <div className="flex items-center justify-between pb-2">
+              <LanguageSwitcher />
+              {content?.phone && (
+                <div className="flex items-center gap-2 text-sm text-foreground/70">
+                  <Phone className="w-4 h-4" />
+                  {content.phone.split('·').map((p, i) => (
+                    <React.Fragment key={i}>
+                      {i > 0 && <span className="text-border">·</span>}
+                      <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="hover:text-primary transition-colors">{p.trim()}</a>
+                    </React.Fragment>
+                  ))}
+                </div>
+              )}
+            </div>
+            <NavLink to="/" end className={linkClass}>{t('nav.home')}</NavLink>
             <div className="py-1">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Services</p>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">{t('nav.services')}</p>
               <div className="flex flex-col gap-1 pl-2">
                 {services.map((s) => (
                   <Link key={s.id} to={`/services/${s.slug}`} className="text-sm text-foreground/70 hover:text-primary py-1">
@@ -121,14 +139,14 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-            <NavLink to="/prices" className={linkClass}>Prices</NavLink>
-            <NavLink to="/about" className={linkClass}>About</NavLink>
-            <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+            <NavLink to="/prices" className={linkClass}>{t('nav.prices')}</NavLink>
+            <NavLink to="/about" className={linkClass}>{t('nav.about')}</NavLink>
+            <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
             <Link
               to="/contact"
               className="mt-2 px-5 py-3 bg-primary text-primary-foreground rounded-md text-sm text-center"
             >
-              Request a quote
+              {t('nav.requestQuote')}
             </Link>
           </div>
         </div>

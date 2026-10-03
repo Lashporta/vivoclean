@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePrices, useServices } from '@/hooks/useContent';
+import { useI18n } from '@/lib/i18n';
 
 export default function PriceList() {
   const { data: prices = [] } = usePrices();
   const { data: services = [] } = useServices();
+  const { t } = useI18n();
 
   const categories = prices.reduce((acc, p) => {
     const cat = p.category || 'General';
@@ -18,10 +20,10 @@ export default function PriceList() {
     <div>
       <section className="bg-secondary/50 pt-40 pb-20 md:pt-48 md:pb-28">
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">Price list</p>
-          <h1 className="font-heading text-5xl md:text-6xl text-primary text-balance">Transparent prices for quality cleaning</h1>
+          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">{t('prices.priceList')}</p>
+          <h1 className="font-heading text-5xl md:text-6xl text-primary text-balance">{t('prices.heading')}</h1>
           <p className="mt-6 text-foreground/70 text-lg max-w-2xl mx-auto">
-            We pride ourselves on transparency. The prices below are indicative — we finalise the exact amount with you after a quick consultation. We also offer discounts, benefits and gift vouchers.
+            {t('prices.intro')}
           </p>
         </div>
       </section>
@@ -30,7 +32,7 @@ export default function PriceList() {
 
       {Object.keys(categories).length === 0 ? (
         <section className="max-w-4xl mx-auto px-5 md:px-8 py-20 text-center text-foreground/60">
-          <p>The price list is being updated. Please <Link to="/contact" className="text-primary underline">contact us</Link> for a quote.</p>
+          <p>{t('prices.updating')}<Link to="/contact" className="text-primary underline">{t('prices.contactUs')}</Link>.</p>
         </section>
       ) : (
         <section className="max-w-5xl mx-auto px-5 md:px-8 py-20 md:py-28 space-y-16">
@@ -61,7 +63,7 @@ export default function PriceList() {
         <section className="bg-secondary/50 py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-5 md:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-4xl text-primary">Browse our services</h2>
+              <h2 className="font-heading text-4xl text-primary">{t('prices.browseServices')}</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {services.map((s) => (
@@ -75,9 +77,9 @@ export default function PriceList() {
       )}
 
       <section className="max-w-4xl mx-auto px-5 md:px-8 py-20 md:py-28 text-center">
-        <h2 className="font-heading text-4xl md:text-5xl text-primary text-balance mb-6">Not sure what you need?</h2>
-        <p className="text-foreground/70 mb-8 max-w-xl mx-auto">Tell us about your space and we will recommend the right service at the right price.</p>
-        <Link to="/contact"><Button size="lg">Get a quote <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
+        <h2 className="font-heading text-4xl md:text-5xl text-primary text-balance mb-6">{t('prices.notSure')}</h2>
+        <p className="text-foreground/70 mb-8 max-w-xl mx-auto">{t('prices.notSureText')}</p>
+        <Link to="/contact"><Button size="lg">{t('prices.getQuote')} <ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
       </section>
     </div>
   );
