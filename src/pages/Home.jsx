@@ -10,6 +10,7 @@ import { useI18n } from '@/lib/i18n';
 import { useTranslate } from '@/hooks/useTranslate';
 import ServiceCard from '@/components/ServiceCard';
 import BookingForm from '@/components/BookingForm';
+import ResultsCarousel from '@/components/ResultsCarousel';
 
 const ICONS = {
   Leaf, ShieldCheck, Clock, Tag, Languages, Sparkles, Heart, Award,
@@ -203,6 +204,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Results gallery */}
+      <ResultsCarousel />
 
       {/* Testimonials */}
       {testimonials.length > 0 && (

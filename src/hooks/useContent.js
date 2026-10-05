@@ -79,3 +79,14 @@ export function usePrices() {
     staleTime: 60000,
   });
 }
+
+export function useResultImages() {
+  return useQuery({
+    queryKey: ['resultImages'],
+    queryFn: async () => {
+      const list = await base44.entities.ResultImage.list('order', 100);
+      return list;
+    },
+    staleTime: 60000,
+  });
+}

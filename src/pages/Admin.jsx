@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, Briefcase, Star, HelpCircle, Tag, Leaf, Inbox } from 'lucide-react';
+import { Settings, Briefcase, Star, HelpCircle, Tag, Leaf, Inbox, Images } from 'lucide-react';
 import SiteContentEditor from '@/components/admin/SiteContentEditor';
 import CollectionManager from '@/components/admin/CollectionManager';
 import BookingsView from '@/components/admin/BookingsView';
@@ -49,6 +49,12 @@ const PRICE_FIELDS = [
   { key: 'order', label: 'Display order', type: 'number' },
 ];
 
+const RESULT_FIELDS = [
+  { key: 'image_url', label: 'Photo', type: 'image' },
+  { key: 'caption', label: 'Caption (optional, auto-translated)', type: 'text' },
+  { key: 'order', label: 'Display order', type: 'number' },
+];
+
 const TABS = [
   { key: 'content', label: 'Site content', icon: Settings },
   { key: 'services', label: 'Services', icon: Briefcase },
@@ -56,6 +62,7 @@ const TABS = [
   { key: 'testimonials', label: 'Testimonials', icon: Star },
   { key: 'faq', label: 'FAQ', icon: HelpCircle },
   { key: 'prices', label: 'Prices', icon: Tag },
+  { key: 'results', label: 'Results gallery', icon: Images },
   { key: 'bookings', label: 'Quote requests', icon: Inbox },
 ];
 
@@ -93,6 +100,7 @@ export default function Admin() {
         {tab === 'testimonials' && <CollectionManager entityName="Testimonial" title="Testimonials" fields={TESTIMONIAL_FIELDS} queryKey="testimonials-admin" orderBy="order" />}
         {tab === 'faq' && <CollectionManager entityName="FaqItem" title="FAQ items" fields={FAQ_FIELDS} queryKey="faq-admin" orderBy="order" />}
         {tab === 'prices' && <CollectionManager entityName="PriceItem" title="Price items" fields={PRICE_FIELDS} queryKey="prices-admin" orderBy="order" />}
+        {tab === 'results' && <CollectionManager entityName="ResultImage" title="Result photos" fields={RESULT_FIELDS} queryKey="results-admin" orderBy="order" />}
         {tab === 'bookings' && (
           <div>
             <h2 className="font-heading text-2xl text-primary mb-5">Quote requests</h2>

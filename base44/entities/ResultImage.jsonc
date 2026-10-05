@@ -1,0 +1,24 @@
+{
+  "name": "ResultImage",
+  "type": "object",
+  "properties": {
+    "image_url": {
+      "type": "string",
+      "title": "Image URL",
+      "format": "url"
+    },
+    "caption": {
+      "type": "string",
+      "title": "Caption",
+      "description": "Optional short caption shown under the photo. Translated automatically when the site language changes."
+    },
+    "order": {
+      "type": "number",
+      "title": "Display Order",
+      "default": 0
+    }
+  },
+  "required": [
+    "image_url"
+  ]
+}
