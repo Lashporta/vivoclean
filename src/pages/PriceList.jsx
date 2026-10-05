@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePrices, useServices } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 
 export default function PriceList() {
   const { data: prices = [] } = usePrices();
@@ -15,6 +16,19 @@ export default function PriceList() {
     (acc[cat] = acc[cat] || []).push(p);
     return acc;
   }, {});
+
+  const texts = useMemo(() => {
+    const out = [];
+    prices.forEach((p) => {
+      if (p.service_name) out.push(p.service_name);
+      if (p.unit) out.push(p.unit);
+      if (p.category) out.push(p.category);
+    });
+    services.forEach((s) => { if (s.title) out.push(s.title); });
+    return out;
+  }, [prices, services]);
+
+  const { tr } = useTranslate(texts);
 
   return (
     <div>
@@ -38,17 +52,17 @@ export default function PriceList() {
         <section className="max-w-5xl mx-auto px-5 md:px-8 py-20 md:py-28 space-y-16">
           {Object.entries(categories).map(([cat, items]) => (
             <div key={cat}>
-              <h2 className="font-heading text-3xl text-primary mb-6 pb-3 border-b border-border">{cat}</h2>
+              <h2 className="font-heading text-3xl text-primary mb-6 pb-3 border-b border-border">{tr(cat)}</h2>
               <div className="divide-y divide-border">
                 {items
                   .slice()
                   .sort((a, b) => (a.order || 0) - (b.order || 0))
                   .map((p) => (
                     <div key={p.id} className="flex items-baseline justify-between gap-6 py-4">
-                      <span className="text-foreground/85">{p.service_name}</span>
+                      <span className="text-foreground/85">{tr(p.service_name)}</span>
                       <span className="flex items-baseline gap-2 shrink-0">
                         <span className="font-heading text-xl text-primary">{p.price}</span>
-                        {p.unit && <span className="text-sm text-muted-foreground">{p.unit}</span>}
+                        {p.unit && <span className="text-sm text-muted-foreground">{tr(p.unit)}</span>}
                       </span>
                     </div>
                   ))}
@@ -68,7 +82,7 @@ export default function PriceList() {
             <div className="flex flex-wrap justify-center gap-3">
               {services.map((s) => (
                 <Link key={s.id} to={`/services/${s.slug}`} className="px-5 py-2.5 rounded-full border border-border bg-card text-sm text-foreground/80 hover:border-accent hover:text-primary transition-colors">
-                  {s.title}
+                  {tr(s.title)}
                 </Link>
               ))}
             </div>

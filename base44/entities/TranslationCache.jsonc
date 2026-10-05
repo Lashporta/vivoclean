@@ -1,0 +1,28 @@
+{
+  "name": "TranslationCache",
+  "type": "object",
+  "properties": {
+    "source_hash": {
+      "type": "string",
+      "title": "Source Hash"
+    },
+    "lang": {
+      "type": "string",
+      "title": "Language"
+    },
+    "source_text": {
+      "type": "string",
+      "title": "Source Text"
+    },
+    "translated_text": {
+      "type": "string",
+      "title": "Translated Text"
+    }
+  },
+  "required": [
+    "source_hash",
+    "lang",
+    "source_text",
+    "translated_text"
+  ]
+}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Loader2, CheckCircle2, Send } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useServices } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,6 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 export default function BookingForm({ defaultService = '', compact = false }) {
   const { data: services = [] } = useServices();
   const { t } = useI18n();
+  const texts = useMemo(() => services.map((s) => s.title).filter(Boolean), [services]);
+  const { tr } = useTranslate(texts);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -87,7 +90,7 @@ export default function BookingForm({ defaultService = '', compact = false }) {
             <SelectTrigger><SelectValue placeholder={t('booking.selectService')} /></SelectTrigger>
             <SelectContent>
               {services.map((s) => (
-                <SelectItem key={s.id} value={s.title}>{s.title}</SelectItem>
+                <SelectItem key={s.id} value={s.title}>{tr(s.title)}</SelectItem>
               ))}
               <SelectItem value="Other">{t('booking.other')}</SelectItem>
             </SelectContent>

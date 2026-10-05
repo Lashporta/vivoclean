@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { useServices, useSiteContent } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +15,13 @@ export default function Navbar() {
   const { data: content } = useSiteContent();
   const location = useLocation();
   const { t } = useI18n();
+  const texts = useMemo(() => {
+    const out = [];
+    if (content?.company_name) out.push(content.company_name);
+    services.forEach((s) => { if (s.title) out.push(s.title); });
+    return out;
+  }, [content, services]);
+  const { tr } = useTranslate(texts);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -43,7 +51,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <span className="font-heading text-2xl md:text-3xl text-primary tracking-tight">
-            {content?.company_name || 'VivoClean'}
+            {tr(content?.company_name || 'VivoClean')}
           </span>
           <span className="hidden sm:block w-8 h-px bg-accent group-hover:w-12 transition-all" />
         </Link>
@@ -68,7 +76,7 @@ export default function Navbar() {
                       to={`/services/${s.slug}`}
                       className="block px-3 py-2 text-sm rounded-md hover:bg-secondary text-foreground/80 hover:text-primary transition-colors"
                     >
-                      {s.title}
+                      {tr(s.title)}
                     </Link>
                   ))}
                 </div>
@@ -134,7 +142,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-1 pl-2">
                 {services.map((s) => (
                   <Link key={s.id} to={`/services/${s.slug}`} className="text-sm text-foreground/70 hover:text-primary py-1">
-                    {s.title}
+                    {tr(s.title)}
                   </Link>
                 ))}
               </div>

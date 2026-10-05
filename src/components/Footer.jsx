@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useServices, useSiteContent } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 import MagnoliaFlower from '@/components/MagnoliaFlower';
 
 export default function Footer() {
   const { data: services = [] } = useServices();
   const { data: content } = useSiteContent();
   const { t } = useI18n();
+  const texts = useMemo(() => {
+    const out = [];
+    if (content?.company_name) out.push(content.company_name);
+    if (content?.footer_text) out.push(content.footer_text);
+    if (content?.tagline) out.push(content.tagline);
+    services.forEach((s) => { if (s.title) out.push(s.title); });
+    return out;
+  }, [content, services]);
+  const { tr } = useTranslate(texts);
 
   return (
     <footer className="relative bg-primary text-primary-foreground/80 mt-24">
@@ -17,11 +27,11 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <span className="font-heading text-3xl text-primary-foreground">
-              {content?.company_name || 'VivoClean'}
+              {tr(content?.company_name || 'VivoClean')}
             </span>
           </div>
           <p className="text-sm leading-relaxed text-primary-foreground/60 max-w-xs">
-            {content?.footer_text || content?.tagline || 'Profesionální ekologické úklidové služby v Praze.'}
+            {tr(content?.footer_text || content?.tagline || 'Profesionální ekologické úklidové služby v Praze.')}
           </p>
           <div className="flex items-center gap-3 mt-5">
             {content?.social_facebook && (
@@ -41,7 +51,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             {services.map((s) => (
               <li key={s.id}>
-                <Link to={`/services/${s.slug}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{s.title}</Link>
+                <Link to={`/services/${s.slug}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{tr(s.title)}</Link>
               </li>
             ))}
           </ul>
@@ -92,7 +102,7 @@ export default function Footer() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/40">
-          <p>© {new Date().getFullYear()} {content?.company_name || 'VivoClean'}. {t('footer.allRights')}</p>
+          <p>© {new Date().getFullYear()} {tr(content?.company_name || 'VivoClean')}. {t('footer.allRights')}</p>
           <p>{t('footer.ecoLine')}</p>
         </div>
       </div>

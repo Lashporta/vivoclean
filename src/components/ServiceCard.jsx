@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 
 export default function ServiceCard({ service, index = 0 }) {
   const { t } = useI18n();
+  const texts = useMemo(() => {
+    const out = [];
+    if (service?.title) out.push(service.title);
+    if (service?.short_description) out.push(service.short_description);
+    return out;
+  }, [service]);
+  const { tr } = useTranslate(texts);
+
   return (
     <Link
       to={`/services/${service.slug}`}
@@ -25,11 +34,11 @@ export default function ServiceCard({ service, index = 0 }) {
       </div>
       <div className="p-6">
         <div className="flex items-center justify-between gap-3 mb-3">
-          <h3 className="font-heading text-2xl text-primary">{service.title}</h3>
+          <h3 className="font-heading text-2xl text-primary">{tr(service.title)}</h3>
           <span className="text-xs text-muted-foreground tabular-nums">0{index + 1}</span>
         </div>
         {service.short_description && (
-          <p className="text-sm text-foreground/70 leading-relaxed line-clamp-3">{service.short_description}</p>
+          <p className="text-sm text-foreground/70 leading-relaxed line-clamp-3">{tr(service.short_description)}</p>
         )}
         <div className="mt-5 flex items-center gap-2 text-sm text-primary group-hover:gap-3 transition-all">
           {t('card.learnMore')} <ArrowRight className="w-4 h-4" />

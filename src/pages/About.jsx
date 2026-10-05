@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, ShieldCheck, Clock, Tag, Languages, Sparkles, Heart, Award, CheckCircle, Users, ThumbsUp } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
 import { useSiteContent, useFeatures } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { useTranslate } from '@/hooks/useTranslate';
 
 const ICONS = {
   Leaf, ShieldCheck, Clock, Tag, Languages, Sparkles, Heart, Award,
@@ -21,13 +22,23 @@ export default function About() {
   const { data: features = [] } = useFeatures();
   const { t } = useI18n();
 
+  const texts = useMemo(() => {
+    const out = [];
+    if (content?.about_heading) out.push(content.about_heading);
+    if (content?.about_text) out.push(content.about_text);
+    features.forEach((f) => { if (f.title) out.push(f.title); if (f.description) out.push(f.description); });
+    return out;
+  }, [content, features]);
+
+  const { tr } = useTranslate(texts);
+
   return (
     <div>
       <section className="bg-secondary/50 pt-40 pb-20 md:pt-48 md:pb-28">
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">{t('about.aboutUs')}</p>
           <h1 className="font-heading text-5xl md:text-6xl text-primary text-balance">
-            {content?.about_heading || 'Jsme VivoClean — kompletní ekologické úklidové služby v Praze'}
+            {tr(content?.about_heading || 'Jsme VivoClean — kompletní ekologické úklidové služby v Praze')}
           </h1>
         </div>
       </section>
@@ -44,7 +55,7 @@ export default function About() {
         </div>
         <div>
           <p className="text-foreground/70 leading-relaxed whitespace-pre-line text-lg">
-            {content?.about_text || 'Nabízíme pravidelný i jednorázový úklid a specializované služby. Zakládáme si na důkladnosti, rychlé komunikaci a stabilní kvalitě, díky které se k nám klienti vracejí.'}
+            {tr(content?.about_text || 'Nabízíme pravidelný i jednorázový úklid a specializované služby. Zakládáme si na důkladnosti, rychlé komunikaci a stabilní kvalitě, díky které se k nám klienti vracejí.')}
           </p>
           <p className="mt-6 text-foreground/70 leading-relaxed whitespace-pre-line">
             {t('about.aboutText2')}
@@ -68,8 +79,8 @@ export default function About() {
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary mb-5">
                     <FeatureIcon name={f.icon} />
                   </div>
-                  <h3 className="font-heading text-2xl text-primary mb-3">{f.title}</h3>
-                  <p className="text-foreground/70 text-sm leading-relaxed">{f.description}</p>
+                  <h3 className="font-heading text-2xl text-primary mb-3">{tr(f.title)}</h3>
+                  <p className="text-foreground/70 text-sm leading-relaxed">{tr(f.description)}</p>
                 </div>
               ))}
             </div>
