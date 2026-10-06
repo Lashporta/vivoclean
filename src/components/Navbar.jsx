@@ -97,7 +97,7 @@ export default function Navbar() {
               {content.phone.split('·').map((p, i) =>
             <React.Fragment key={i}>
                   {i > 0 && <span className="text-border">·</span>}
-                  <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="hover:text-primary transition-colors hidden">{p.trim()}</a>
+                  
                 </React.Fragment>
             )}
             </div>
