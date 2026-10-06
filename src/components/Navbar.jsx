@@ -53,7 +53,6 @@ export default function Navbar() {
           <span className="font-heading text-2xl md:text-3xl text-primary tracking-tight">
             {tr(content?.company_name || 'VivoClean')}
           </span>
-          <span className="hidden sm:block w-8 h-px bg-accent group-hover:w-12 transition-all" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -86,7 +85,9 @@ export default function Navbar() {
 
           <NavLink to="/prices" className={linkClass}>{t('nav.prices')}</NavLink>
           <NavLink to="/about" className={linkClass}>{t('nav.about')}</NavLink>
-          <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
+          <NavLink to="/contact" className={cn(linkClass, 'flex items-center')} aria-label={t('nav.contact')}>
+            <Phone className="w-4 h-4" />
+          </NavLink>
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
