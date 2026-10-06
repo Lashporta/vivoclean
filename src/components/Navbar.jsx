@@ -85,13 +85,11 @@ export default function Navbar() {
 
           <NavLink to="/prices" className={linkClass}>{t('nav.prices')}</NavLink>
           <NavLink to="/about" className={linkClass}>{t('nav.about')}</NavLink>
-          <NavLink to="/contact" className={cn(linkClass, 'flex items-center')} aria-label={t('nav.contact')}>
-            <Phone className="w-4 h-4" />
-          </NavLink>
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
           <LanguageSwitcher />
+          <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
           {content?.phone &&
           <div className="flex items-center gap-2 text-sm text-foreground/70">
               <Phone className="w-4 h-4" />
