@@ -94,13 +94,14 @@ export default function Home() {
         {!content?.hero_image && <div className="absolute inset-0 bg-secondary" />}
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 text-center py-32">
-          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-6">{tr(content?.tagline || 'Eco úklid · Praha')}</p>
-          <h1 className="font-heading text-5xl md:text-7xl text-primary leading-[1.05] text-balance">
-            {tr(content?.hero_heading || 'Profesionální úklid za férovou cenu v Praze')}
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            {tr(content?.hero_subheading || 'Ekologický, plně pojištěný a ověřený stovkami klientů.')}
-          </p>
+          <div className="inline-block rounded-2xl px-6 md:px-10 py-8 md:py-10 backdrop-blur-md bg-background/45 border border-background/40 shadow-sm">
+            <h1 className="font-heading text-5xl md:text-7xl text-primary leading-[1.05] text-balance">
+              {tr(content?.hero_heading || 'Profesionální úklid za férovou cenu v Praze')}
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto leading-relaxed font-medium">
+              {tr(content?.hero_subheading || 'Ekologický, plně pojištěný a ověřený stovkami klientů.')}
+            </p>
+          </div>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact">
               <Button size="lg" className="px-8">
