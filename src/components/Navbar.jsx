@@ -65,7 +65,7 @@ export default function Navbar() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}>
             
-            <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/70 hover:text-primary transition-colors">
+            <button className="flex items-center gap-1 text-[15px] font-semibold tracking-tight text-foreground/80 hover:text-primary transition-colors">
               {t('nav.services')} <ChevronDown className="w-3.5 h-3.5" />
             </button>
             {servicesOpen &&
