@@ -53,11 +53,11 @@ export default function About() {
             <div className="w-full h-full bg-secondary" />
           )}
         </div>
-        <div>
-          <p className="text-foreground/70 leading-relaxed whitespace-pre-line text-lg">
+        <div className="min-w-0">
+          <p className="text-foreground/70 leading-relaxed whitespace-pre-line break-words text-lg">
             {tr(content?.about_text || 'Nabízíme pravidelný i jednorázový úklid a specializované služby. Zakládáme si na důkladnosti, rychlé komunikaci a stabilní kvalitě, díky které se k nám klienti vracejí.')}
           </p>
-          <p className="mt-6 text-foreground/70 leading-relaxed whitespace-pre-line">
+          <p className="mt-6 text-foreground/70 leading-relaxed whitespace-pre-line break-words">
             {t('about.aboutText2')}
           </p>
           <Link to="/contact" className="mt-8 inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
