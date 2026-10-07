@@ -51,7 +51,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center group">
           <img
-            src="https://media.base44.com/images/public/6ab1288c9f58500604265486/647c84cf8_ChatGPTImage7202609_05_06.png"
+            src="https://media.base44.com/images/public/6ab1288c9f58500604265486/e827dbabd_ChatGPTImage72026.svg"
             alt={tr(content?.company_name || 'VivoClean')}
             className="h-9 md:h-11 w-auto object-contain"
           />
