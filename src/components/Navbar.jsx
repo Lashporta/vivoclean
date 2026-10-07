@@ -37,8 +37,8 @@ export default function Navbar() {
 
   const linkClass = ({ isActive }) =>
   cn(
-    'text-sm tracking-wide transition-colors hover:text-primary',
-    isActive ? 'text-primary' : 'text-foreground/70'
+    'text-[15px] font-semibold tracking-tight transition-colors hover:text-primary',
+    isActive ? 'text-primary' : 'text-foreground/80'
   );
 
   return (
