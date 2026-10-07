@@ -49,10 +49,12 @@ export default function Navbar() {
       )}>
       
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="font-heading text-2xl md:text-3xl text-primary tracking-tight">
-            {tr(content?.company_name || 'VivoClean')}
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img
+            src="https://media.base44.com/images/public/6ab1288c9f58500604265486/647c84cf8_ChatGPTImage7202609_05_06.png"
+            alt={tr(content?.company_name || 'VivoClean')}
+            className="h-9 md:h-11 w-auto object-contain"
+          />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
