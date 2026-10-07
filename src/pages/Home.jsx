@@ -134,12 +134,12 @@ export default function Home() {
 
       {/* About */}
       <section className="max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div>
+        <div className="min-w-0">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-4">{t('home.aboutVivoclean')}</p>
           <h2 className="font-heading text-4xl md:text-5xl text-primary mb-6 text-balance">
             {tr(content?.about_heading || 'Jsme VivoClean — kompletní ekologické úklidové služby v Praze')}
           </h2>
-          <p className="text-foreground/70 leading-relaxed whitespace-pre-line">
+          <p className="text-foreground/70 leading-relaxed whitespace-pre-line break-words">
             {tr(content?.about_text || 'Nabízíme pravidelný i jednorázový úklid a specializované služby jako úklid po rekonstrukci, úklid při stěhování, hodinový úklid, praní a žehlení, čištění čalounění a koberců, mytí oken, úklid společných prostor a kanceláří. Zakládáme si na důkladnosti, rychlé komunikaci a stabilní kvalitě.')}
           </p>
           <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-primary hover:gap-3 transition-all">
