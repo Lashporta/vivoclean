@@ -13,6 +13,7 @@ export default function ResultsCarousel() {
   const scroller = useRef(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [active, setActive] = useState(null);
 
   const updateArrows = useCallback(() => {
     const el = scroller.current;
@@ -68,13 +69,20 @@ export default function ResultsCarousel() {
                 key={img.id}
                 className="snap-start shrink-0 w-[85%] sm:w-[60%] md:w-[40%] lg:w-[30%] rounded-lg overflow-hidden bg-card border border-border"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  {img.image_url ? (
-                    <Image src={img.image_url} alt={img.caption || ''} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-secondary" />
-                  )}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setActive(img)}
+                  className="block w-full text-left"
+                  aria-label={tr(img.caption) || t('home.results')}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    {img.image_url ? (
+                      <Image src={img.image_url} alt={img.caption || ''} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-secondary" />
+                    )}
+                  </div>
+                </button>
                 {img.caption && (
                   <figcaption className="px-4 py-3 text-sm text-foreground/70 text-center">{tr(img.caption)}</figcaption>
                 )}
@@ -82,6 +90,27 @@ export default function ResultsCarousel() {
             ))}
         </div>
       </div>
+
+      {active && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-4 cursor-zoom-out animate-bloom"
+          onClick={() => setActive(null)}
+        >
+          <figure className="max-w-5xl w-full max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            {active.image_url && (
+              <Image
+                src={active.image_url}
+                alt={active.caption || ''}
+                fittingType="fit"
+                className="w-full max-h-[82vh] rounded-lg"
+              />
+            )}
+            {active.caption && (
+              <figcaption className="mt-4 text-sm text-white/80 text-center">{tr(active.caption)}</figcaption>
+            )}
+          </figure>
+        </div>
+      )}
     </section>
   );
 }
