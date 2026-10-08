@@ -90,8 +90,11 @@ export default function Footer() {
               <li className="flex items-start gap-2 text-primary-foreground/60"><MapPin className="w-4 h-4 mt-0.5 shrink-0" /> {content.address}</li>
             )}
           </ul>
-          {content?.company_legal && (
-            <p className="text-xs text-primary-foreground/40 mt-4">{content.company_legal}{content?.company_id ? ` · IČO ${content.company_id}` : ''}</p>
+          {(content?.company_legal || content?.company_id) && (
+            <p className="text-xs text-primary-foreground/40 mt-4">
+              {content?.company_legal && <>{content.company_legal}{content?.company_id ? ' · ' : ''}</>}
+              {content?.company_id && <>IČO {content.company_id}</>}
+            </p>
           )}
         </div>
       </div>
