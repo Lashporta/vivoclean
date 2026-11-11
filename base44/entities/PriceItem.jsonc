@@ -21,6 +21,12 @@
       "title": "Category",
       "default": "General"
     },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Optional short summary for search engines (up to 1000 characters).",
+      "maxLength": 1000
+    },
     "order": {
       "type": "number",
       "title": "Display Order",

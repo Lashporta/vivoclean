@@ -10,6 +10,12 @@
       "type": "string",
       "title": "Answer"
     },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Optional short summary for search engines (up to 1000 characters).",
+      "maxLength": 1000
+    },
     "service_slug": {
       "type": "string",
       "title": "Service Slug",

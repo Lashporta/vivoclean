@@ -31,6 +31,12 @@
       "type": "string",
       "title": "Message"
     },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Optional short summary for search engines (up to 1000 characters).",
+      "maxLength": 1000
+    },
     "has_vacuum": {
       "type": "string",
       "title": "Has own vacuum?",
