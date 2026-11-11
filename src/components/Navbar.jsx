@@ -92,15 +92,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <LanguageSwitcher />
           <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
-          {content?.phone &&
-          <div className="flex items-center gap-3 text-sm text-foreground/70">
-              {content.phone.split('·').map((p, i) =>
-            <a key={i} href={`tel:${p.trim().replace(/\s/g, '')}`} className="hover:text-primary transition-colors">
-                  {p.trim()}
-                </a>
-            )}
-            </div>
-          }
+
           <Link
             to="/contact"
             className="px-5 py-2.5 bg-primary text-primary-foreground rounded-md text-sm tracking-wide hover:bg-primary/90 transition-colors">
