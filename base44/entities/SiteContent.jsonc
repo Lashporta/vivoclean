@@ -20,7 +20,7 @@
     "email": {
       "type": "string",
       "title": "Email",
-      "default": "info@magnolia-uklid.cz"
+      "default": "info@vivoclean.com"
     },
     "address": {
       "type": "string",
