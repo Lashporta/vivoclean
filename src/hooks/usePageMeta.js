@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const SITE_URL = 'https://vivoclean.cz';
 const OG_IMAGE =
-  'https://media.base44.com/images/public/6ab1288c9f58500604265486/345ffd2c2_generated_image.png';
+  'https://media.base44.com/images/public/6ab1288c9f58500604265486/edc51339d_generated_image.png';
 
 function setMeta(attribute, name, content) {
   let el = document.head.querySelector(`meta[${attribute}="${name}"]`);
