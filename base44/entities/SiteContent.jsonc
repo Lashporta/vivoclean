@@ -20,7 +20,7 @@
     "email": {
       "type": "string",
       "title": "Email",
-      "default": "info@vivoclean.com"
+      "default": "info@vivoclean.cz"
     },
     "address": {
       "type": "string",
