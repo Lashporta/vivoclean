@@ -53,7 +53,7 @@ export default function Navbar() {
           <img
             src="https://media.base44.com/images/public/6ab1288c9f58500604265486/e827dbabd_ChatGPTImage72026.svg"
             alt={tr(content?.company_name || 'VivoClean')}
-            className="h-9 md:h-11 w-auto object-contain"
+            className="h-[47px] md:h-[57px] w-auto object-contain"
           />
         </Link>
 
@@ -93,13 +93,11 @@ export default function Navbar() {
           <LanguageSwitcher />
           <NavLink to="/contact" className={linkClass}>{t('nav.contact')}</NavLink>
           {content?.phone &&
-          <div className="flex items-center gap-2 text-sm text-foreground/70">
-              <Phone className="w-4 h-4" />
+          <div className="flex items-center gap-3 text-sm text-foreground/70">
               {content.phone.split('·').map((p, i) =>
-            <React.Fragment key={i}>
-                  {i > 0 && <span className="text-border">·</span>}
-                  
-                </React.Fragment>
+            <a key={i} href={`tel:${p.trim().replace(/\s/g, '')}`} className="hover:text-primary transition-colors">
+                  {p.trim()}
+                </a>
             )}
             </div>
           }

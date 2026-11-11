@@ -73,12 +73,9 @@ export default function Footer() {
             {content?.phone && (
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <div>
+                <div className="flex flex-col">
                   {content.phone.split('·').map((p, i) => (
-                    <React.Fragment key={i}>
-                      {i > 0 && <span className="text-primary-foreground/30 mx-1">·</span>}
-                      <a href={`tel:${p.trim().replace(/\s/g, '')}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{p.trim()}</a>
-                    </React.Fragment>
+                    <a key={i} href={`tel:${p.trim().replace(/\s/g, '')}`} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">{p.trim()}</a>
                   ))}
                 </div>
               </li>
