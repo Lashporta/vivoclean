@@ -3,6 +3,7 @@ import { Settings, Briefcase, Star, HelpCircle, Tag, Leaf, Inbox, Images } from 
 import SiteContentEditor from '@/components/admin/SiteContentEditor';
 import CollectionManager from '@/components/admin/CollectionManager';
 import BookingsView from '@/components/admin/BookingsView';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const SERVICE_FIELDS = [
   { key: 'slug', label: 'URL slug', type: 'text' },
@@ -68,6 +69,7 @@ const TABS = [
 
 export default function Admin() {
   const [tab, setTab] = useState('content');
+  usePageMeta({ title: 'Content management — VivoClean', noindex: true });
 
   return (
     <div className="min-h-screen bg-background pt-28 pb-20">

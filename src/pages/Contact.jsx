@@ -2,11 +2,13 @@ import React from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useSiteContent } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import BookingForm from '@/components/BookingForm';
 
 export default function Contact() {
   const { data: content } = useSiteContent();
   const { t } = useI18n();
+  usePageMeta({ title: t('meta.contactTitle'), description: t('meta.contactDesc'), path: '/contact' });
 
   return (
     <div>

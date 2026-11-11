@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useSiteContent, useFeatures } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
 import { useTranslate } from '@/hooks/useTranslate';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const ICONS = {
   Leaf, ShieldCheck, Clock, Tag, Languages, Sparkles, Heart, Award,
@@ -31,6 +32,7 @@ export default function About() {
   }, [content, features]);
 
   const { tr } = useTranslate(texts);
+  usePageMeta({ title: t('meta.aboutTitle'), description: t('meta.aboutDesc'), path: '/about' });
 
   return (
     <div>

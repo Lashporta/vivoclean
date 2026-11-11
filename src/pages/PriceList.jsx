@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { usePrices, useServices } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
 import { useTranslate } from '@/hooks/useTranslate';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 export default function PriceList() {
   const { data: prices = [] } = usePrices();
@@ -29,6 +30,7 @@ export default function PriceList() {
   }, [prices, services]);
 
   const { tr } = useTranslate(texts);
+  usePageMeta({ title: t('meta.pricesTitle'), description: t('meta.pricesDesc'), path: '/prices' });
 
   return (
     <div>

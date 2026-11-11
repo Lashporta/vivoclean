@@ -8,6 +8,7 @@ import {
 } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
 import { useTranslate } from '@/hooks/useTranslate';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import ServiceCard from '@/components/ServiceCard';
 import BookingForm from '@/components/BookingForm';
 import ResultsCarousel from '@/components/ResultsCarousel';
@@ -80,6 +81,7 @@ export default function Home() {
   }, [content, features, testimonials, faqs, badges, steps]);
 
   const { tr } = useTranslate(texts);
+  usePageMeta({ title: t('meta.homeTitle'), description: t('meta.homeDesc'), path: '/' });
 
   return (
     <div>

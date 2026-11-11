@@ -6,6 +6,16 @@ const STORAGE_KEY = 'vivoclean-lang';
 
 const translations = {
   cz: {
+    'meta.homeTitle': 'VivoClean — ekologický úklid v Praze',
+    'meta.homeDesc': 'Profesionální ekologický úklid domácností i kanceláří v Praze. Plně pojištěno, férové ceny, nabídka bez závazku ještě ten samý den.',
+    'meta.pricesTitle': 'Ceník úklidových služeb — VivoClean Praha',
+    'meta.pricesDesc': 'Průhledný ceník úklidu v Praze: pravidelný i jednorázový úklid, mytí oken, čištění čalounění. Ceny od 400 Kč za hodinu, nabídka bez závazku.',
+    'meta.aboutTitle': 'O nás — VivoClean, úklidová firma v Praze',
+    'meta.aboutDesc': 'Jsme VivoClean. Kompletní ekologické úklidové služby v Praze — pravidelně i jednorázově, důkladně a za férové ceny.',
+    'meta.contactTitle': 'Kontakt a poptávka úklidu — VivoClean',
+    'meta.contactDesc': 'Napište nám nebo zavolejte. Nabídku úklidu v Praze připravíme ještě ten samý den, bez závazku.',
+    'meta.serviceTitle': '{title} — VivoClean Praha',
+
     'nav.home': 'Domů',
     'nav.services': 'Služby',
     'nav.prices': 'Ceník',
@@ -119,6 +129,16 @@ const translations = {
     'notfound.goHome': 'Přejít domů',
   },
   en: {
+    'meta.homeTitle': 'VivoClean — eco cleaning in Prague',
+    'meta.homeDesc': 'Professional eco-friendly cleaning for homes and offices in Prague. Fully insured, fair prices, a no-obligation quote the same day.',
+    'meta.pricesTitle': 'Cleaning price list — VivoClean Prague',
+    'meta.pricesDesc': 'Transparent cleaning prices in Prague: regular and one-off cleaning, window washing, upholstery cleaning. From 400 CZK per hour, no obligation.',
+    'meta.aboutTitle': 'About us — VivoClean cleaning company in Prague',
+    'meta.aboutDesc': 'We are VivoClean. Complete eco cleaning services across Prague, regular or one-off, thorough and fairly priced.',
+    'meta.contactTitle': 'Contact and cleaning quote — VivoClean',
+    'meta.contactDesc': 'Write or call us. We prepare your cleaning quote in Prague the same day, with no obligation.',
+    'meta.serviceTitle': '{title} — VivoClean Prague',
+
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.prices': 'Prices',

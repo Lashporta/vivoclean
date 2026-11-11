@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useService, useFaqs, useServices } from '@/hooks/useContent';
 import { useI18n } from '@/lib/i18n';
 import { useTranslate } from '@/hooks/useTranslate';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import ServiceCard from '@/components/ServiceCard';
 import BookingForm from '@/components/BookingForm';
 
@@ -42,6 +43,11 @@ export default function ServiceDetail() {
   }, [service, faqs]);
 
   const { tr } = useTranslate(texts);
+  usePageMeta({
+    title: service ? t('meta.serviceTitle', { title: tr(service.title) }) : t('service.notFound'),
+    description: service ? tr(service.short_description || service.intro || '') : undefined,
+    path: `/services/${slug}`,
+  });
 
   if (isLoading) {
     return (
